@@ -1,3 +1,5 @@
+package dataframes
+
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{Row, SparkSession}
 
@@ -27,7 +29,7 @@ object DataFramesBasics extends App {
   // spark type
   val longType = LongType
 
-  val carSchema = StructType(
+  val carsSchema = StructType(
     Array(
       StructField("Name", StringType),
       StructField("Miles_per_Gallon", IntegerType),
@@ -76,7 +78,9 @@ object DataFramesBasics extends App {
   println(s"here is my manualCarsDF: $manualCarsDF")
 
   //   DF with implicits
+
   import sparkSession.implicits._
+
   val manualCarsDFWithImplicits = cars.toDF(
     "Name",
     "MPG",
